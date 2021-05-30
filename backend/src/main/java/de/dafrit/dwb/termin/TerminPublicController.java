@@ -26,9 +26,9 @@ public class TerminPublicController {
 	public HttpEntity<TerminListModel> getTermineByThema(@PathVariable Long themaId) {
 		Optional<TerminListModel> list = terminPublicService.findTermineByThemaId(themaId);
 		if (list.isEmpty()) {
-			return new ResponseEntity<TerminListModel>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		
-		return new ResponseEntity<TerminListModel>(list.get(), HttpStatus.OK);
+		return new ResponseEntity<>(list.get(), HttpStatus.OK);
 	}
 }

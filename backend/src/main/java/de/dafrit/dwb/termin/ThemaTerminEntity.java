@@ -5,9 +5,12 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity(name = "ThemaTermin")
 @Table(name = "thema_termin")
 @IdClass(ThemaTerminId.class)
+@Data
 public class ThemaTerminEntity {
 
 	@Id
@@ -17,30 +20,4 @@ public class ThemaTerminEntity {
 	private Long termin;
 	
 	private int prioritaet;
-
-	public Long getThema() {
-		return thema;
-	}
-
-	public void setThema(Long thema) {
-		this.thema = thema;
-	}
-
-	public Long getTermin() {
-		return termin;
-	}
-
-	public void setTermin(Long termin) {
-		this.termin = termin;
-	}
-
-	public int getPrioritaet() {
-		return prioritaet;
-	}
-
-	public void setPrioritaet(int prioritaet) {
-		this.prioritaet = prioritaet;
-	}
-	
-	
 }

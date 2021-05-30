@@ -1,6 +1,5 @@
 package de.dafrit.dwb.thema;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.http.HttpEntity;
@@ -22,7 +21,7 @@ public class ThemaPublicController {
 	}
 
 	@GetMapping
-	public List<ThemaEntity> getAll() {
+	public ThemaOverviewModel getAll() {
 		return themaPublicService.findAll();
 	}
 	
@@ -31,10 +30,10 @@ public class ThemaPublicController {
 		Optional<ThemaListModel> rubrikThemen = themaPublicService.getByRubrikId(rubrikId);
 		
 		if (rubrikThemen.isEmpty()) {
-			return new ResponseEntity<ThemaListModel>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		
-		return new ResponseEntity<ThemaListModel>(rubrikThemen.get(), HttpStatus.OK);
+		return new ResponseEntity<>(rubrikThemen.get(), HttpStatus.OK);
 	}
 	
 	@GetMapping("/{themaId}")
@@ -42,9 +41,9 @@ public class ThemaPublicController {
 		Optional<ThemaDetailsModel> details = themaPublicService.getDetails(themaId);
 		
 		if (details.isEmpty()) {
-			return new ResponseEntity<ThemaDetailsModel>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 		
-		return new ResponseEntity<ThemaDetailsModel>(details.get(), HttpStatus.OK);
+		return new ResponseEntity<>(details.get(), HttpStatus.OK);
 	}
 }

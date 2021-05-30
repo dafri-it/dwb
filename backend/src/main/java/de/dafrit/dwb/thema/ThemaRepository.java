@@ -12,4 +12,7 @@ public interface ThemaRepository extends JpaRepository<ThemaEntity, Long> {
 	@Query("SELECT t FROM Thema t LEFT JOIN FETCH t.rubriken r LEFT JOIN FETCH t.termine te WHERE r.rubrik = ?1 ORDER BY r.prioritaet")
 	List<ThemaEntity> findByRubrikId(Long rubrikId);
 
+	@Query("SELECT t FROM Thema t")
+	List<ThemaEntity> findAllMinimized();
+
 }

@@ -4,6 +4,11 @@ import java.time.LocalDate;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
+@Getter
+@EqualsAndHashCode(callSuper = false)
 public class TerminModel extends RepresentationModel<TerminModel> {
 
 	private final Long id;
@@ -28,25 +33,4 @@ public class TerminModel extends RepresentationModel<TerminModel> {
 	public TerminModel(TerminEntity entity) {
 		this(entity.getId(), entity.getNr(), entity.getVon(), entity.getBis(), entity.getOrt());
 	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getNr() {
-		return nr;
-	}
-
-	public LocalDate getVon() {
-		return von;
-	}
-
-	public LocalDate getBis() {
-		return bis;
-	}
-
-	public String getOrt() {
-		return ort;
-	}
-
 }

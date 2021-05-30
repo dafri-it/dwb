@@ -5,9 +5,12 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity(name = "RubrikParentChild")
 @Table(name = "rubrik_parent_child")
 @IdClass(RubrikParentChildId.class)
+@Data
 public class RubrikParentChildEntity {
 
 	@Id
@@ -27,29 +30,4 @@ public class RubrikParentChildEntity {
 		this.child = child;
 		this.prioritaet = prioritaet;
 	}
-
-	public long getParent() {
-		return parent;
-	}
-
-	public void setParent(long parent) {
-		this.parent = parent;
-	}
-
-	public long getChild() {
-		return child;
-	}
-
-	public void setChild(long child) {
-		this.child = child;
-	}
-
-	public int getPrioritaet() {
-		return prioritaet;
-	}
-
-	public void setPrioritaet(int prioritaet) {
-		this.prioritaet = prioritaet;
-	}
-
 }

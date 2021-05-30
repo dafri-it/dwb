@@ -1,4 +1,4 @@
-package de.dafrit.dwb.rubrik;
+package de.dafrit.dwb.thema;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
@@ -13,12 +13,13 @@ import lombok.Getter;
 
 @Getter
 @EqualsAndHashCode(callSuper = false)
-public class RubrikTreeModel extends RepresentationModel<RubrikTreeModel> {
+public class ThemaOverviewModel extends RepresentationModel<ThemaOverviewModel> {
+    
+    private List<ThemaOverviewEntryModel> themen;
 
-	private final List<RubrikModel> tree;
+    public ThemaOverviewModel(List<ThemaOverviewEntryModel> themen) {
+        this.themen = themen;
+        add(linkTo(methodOn(HomeController.class).index()).withRel("index"));
+    }
 
-	public RubrikTreeModel(List<RubrikModel> tree) {
-		this.tree = tree;
-		add(linkTo(methodOn(HomeController.class).index()).withRel("index"));
-	}
 }

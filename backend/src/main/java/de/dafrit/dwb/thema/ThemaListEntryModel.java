@@ -10,7 +10,11 @@ import org.springframework.hateoas.RepresentationModel;
 
 import de.dafrit.dwb.termin.TerminEntity;
 import de.dafrit.dwb.termin.TerminModel;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
+@Getter
+@EqualsAndHashCode(callSuper = false)
 public class ThemaListEntryModel extends RepresentationModel<ThemaListEntryModel> {
 
 	private final Long id;
@@ -38,29 +42,5 @@ public class ThemaListEntryModel extends RepresentationModel<ThemaListEntryModel
 	
 	public ThemaListEntryModel(ThemaEntity entity, List<TerminEntity> termine2) {
 		this(entity.getId(), entity.getNr(), entity.getName(), entity.getSubTitle(), entity.getDescription(), termine2);
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public String getNr() {
-		return nr;
-	}
-
-	public String getName() {
-		return name;
-	}
-	
-	public String getSubTitel() {
-		return subTitel;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-	
-	public List<TerminModel> getTermine() {
-		return termine;
 	}
 }

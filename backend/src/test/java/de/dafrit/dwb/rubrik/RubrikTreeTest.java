@@ -1,17 +1,13 @@
-package de.dafri.dwb.rubrik;
+package de.dafrit.dwb.rubrik;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
-import de.dafrit.dwb.rubrik.RubrikEntity;
-import de.dafrit.dwb.rubrik.RubrikModel;
-import de.dafrit.dwb.rubrik.RubrikParentChildEntity;
-import de.dafrit.dwb.rubrik.RubrikTree;
-
-class RubrikTreeShould {
+class RubrikTreeTest {
 
 	List<RubrikEntity> rubriken = List.of(
 			new RubrikEntity(1L, "0", "Aktuelles"), 

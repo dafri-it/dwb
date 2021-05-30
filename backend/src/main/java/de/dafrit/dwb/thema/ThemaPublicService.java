@@ -5,6 +5,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import de.dafrit.dwb.rubrik.RubrikRepository;
@@ -28,10 +29,18 @@ public class ThemaPublicService {
 		this.terminRepository = terminRepository;
 	}
 
-	public List<ThemaEntity> findAll() {
-		return themaRepository.findAll();
+	@Cacheable("themen_overview")
+	public ThemaOverviewModel findAll() {
+		List<ThemaEntity> themen = themaRepository.findAllMinimized();
+
+		List<ThemaOverviewEntryModel> entries = themen.stream()
+				.map(thema -> new ThemaOverviewEntryModel(thema))
+				.collect(Collectors.toList());
+
+		return new ThemaOverviewModel(entries);
 	}
 
+	@Cacheable("themen")
 	public Optional<ThemaListModel> getByRubrikId(Long rubrikId) {
 		boolean existsById = rubrikRepository.existsById(rubrikId);
 		if (!existsById) {
@@ -48,7 +57,7 @@ public class ThemaPublicService {
 		return Optional.of(new ThemaListModel(rubrikId, entries));
 	}
 
-	public ThemaListEntryModel createListModel(ThemaEntity entity, List<TerminEntity> termine) {
+	private ThemaListEntryModel createListModel(ThemaEntity entity, List<TerminEntity> termine) {
 		return new ThemaListEntryModel(entity, termine);
 	}
 	

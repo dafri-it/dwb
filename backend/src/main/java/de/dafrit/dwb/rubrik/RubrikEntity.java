@@ -4,8 +4,11 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.Data;
+
 @Entity(name = "Rubrik")
 @Table(name = "rubrik")
+@Data
 public class RubrikEntity {
 
 	@Id
@@ -27,45 +30,5 @@ public class RubrikEntity {
 		this.id = id;
 		this.nr = nr;
 		this.name = name;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getNr() {
-		return nr;
-	}
-
-	public void setNr(String nr) {
-		this.nr = nr;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getSlug() {
-		return slug;
-	}
-
-	public void setSlug(String slug) {
-		this.slug = slug;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 }

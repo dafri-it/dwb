@@ -1,9 +1,10 @@
 package de.dafrit.dwb.rubrik;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.stereotype.Service;
 
 @Service
 public class RubrikPublicService {
@@ -24,6 +25,7 @@ public class RubrikPublicService {
 		return rubrikRepository.findAll();
 	}
 
+	@Cacheable("rubriken")
 	public RubrikTreeModel getTree() {
 		List<RubrikEntity> rubriken = rubrikRepository.findAll();
 		List<RubrikParentChildEntity> parentChilds = parentChildRepository.findAll();

@@ -4,6 +4,11 @@ import java.util.List;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+
+@Getter
+@EqualsAndHashCode(callSuper = false)
 public class TerminListModel extends RepresentationModel<TerminListModel> {
 
 	private final Long themaId;
@@ -16,13 +21,4 @@ public class TerminListModel extends RepresentationModel<TerminListModel> {
 		this.termine = termine;
 //		add(linkTo(methodOn(PublicController.class).getTermineByThema(themaId)).withRel("them"));
 	}
-
-	public Long getThemaId() {
-		return themaId;
-	}
-
-	public List<TerminModel> getTermine() {
-		return termine;
-	}
-
 }

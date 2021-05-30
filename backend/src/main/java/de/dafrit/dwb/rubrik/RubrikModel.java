@@ -9,7 +9,11 @@ import java.util.List;
 import org.springframework.hateoas.RepresentationModel;
 
 import de.dafrit.dwb.thema.ThemaPublicController;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
 
+@Getter
+@EqualsAndHashCode(callSuper = false)
 public class RubrikModel extends RepresentationModel<RubrikModel> {
 
 	private final long id;
@@ -31,7 +35,7 @@ public class RubrikModel extends RepresentationModel<RubrikModel> {
 		this.name = name;
 		this.slug = slug;
 		this.description = description;
-		this.childs = new ArrayList<RubrikModel>();
+		this.childs = new ArrayList<>();
 		if (parent != null) {
 			parent.childs.add(this);
 		}
@@ -42,29 +46,4 @@ public class RubrikModel extends RepresentationModel<RubrikModel> {
 	public static RubrikModel createRoot() {
 		return new RubrikModel(-1, "", "", "", "", null);
 	}
-
-	public long getId() {
-		return id;
-	}
-
-	public String getNr() {
-		return nr;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getSlug() {
-		return slug;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public List<RubrikModel> getChilds() {
-		return childs;
-	}
-
 }
