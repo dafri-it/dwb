@@ -1,0 +1,26 @@
+version: '3.3'
+
+services:
+  mysql:
+    container_name: dwb_sb_mysql
+    image: mysql:5.6
+    working_dir: /mysql
+    # volumes:
+    #   - ./mysql:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=dwb
+      - MYSQL_DATABASE=dwb
+      - MYSQL_USER=dwb
+      - MYSQL_PASSWORD=dwb
+    ports:
+      - 8092:3306
+
+  phpmyadmin:
+    container_name: dwb_sb_pma
+    image: phpmyadmin/phpmyadmin
+    environment:
+      - MYSQL_USERNAME=dwb
+      - MYSQL_ROOT_PASSWORD=dwb
+      - PMA_HOST=mysql
+    ports:
+      - 8180:80
